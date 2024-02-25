@@ -1,0 +1,41 @@
+<form 
+    [formGroup]="formulaire" 
+    (ngSubmit)="onAjoutUtilisateur()"
+    style="display: flex; flex-direction:column; justify-content: center; align-items: center">
+    <mat-form-field >
+        <mat-label>Prénom</mat-label>
+        <input matInput placeholder="Ex. John" formControlName="prenom">
+        <mat-error>Le prénom est obbligatoire</mat-error>
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Ex. BERNARD" formControlName="nom">
+        <mat-error>Le nom est obbligatoire</mat-error>
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Ex. a@a.com" formControlName="email">
+
+        @if(formulaire.get('email')?.hasError('required')) {
+            <mat-error>L'email est obbligatoire</mat-error>
+        }
+
+        @if(formulaire.get('email')?.hasError('email')) {
+            <mat-error>Mauvais format d'email</mat-error>
+        }        
+
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>Mot de passe</mat-label>
+        <input matInput formControlName="motDePasse" type="password">
+        <mat-error>Le mot de passe est obbligatoire</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary">
+        Ajouter l'utilisateur
+    </button>
+
+</form>

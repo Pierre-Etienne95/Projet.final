@@ -1,0 +1,29 @@
+<div class="container">
+
+    <button mat-raised-button color="primary" routerLink="/edition-stock">
+      <mat-icon fontIcon="person_add"></mat-icon>
+      Ajout stock
+    </button>
+    
+    <div class="row">
+      @for (stock of listeStocks; track $index){
+        <div class="col-12 col-md-6 col-lg-4 mt-4">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Stock du {{stock.localS.nom}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="https://placehold.co/600x400/png">    
+            <mat-card-content>
+              <p>
+                Quantiter {{stock.quantite}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="primary" [routerLink]="['/edition-stock', stock.id]">Modifier</button>
+              <button mat-raised-button color="warn" (click)="supprimeStock(stock.id)">Supprimer</button>
+            </mat-card-actions>
+        </mat-card>
+        </div>  
+      }
+    </div>
+  </div>

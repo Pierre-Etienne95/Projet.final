@@ -1,0 +1,26 @@
+@if (utilisateur == null){
+
+    <form style="display: flex;flex-direction: column; max-width: 400px;" [formGroup]="formulaire" (ngSubmit)="connexion()">
+    
+        <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error>L'email est obbligatoire</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field >
+            <mat-label>Mot de passe</mat-label>
+            <input matInput formControlName="motDePasse" type ="password">
+            <mat-error>Le mot de passe est obbligatoire</mat-error>
+        </mat-form-field>
+    
+        <button mat-raised-button color="primary">Se connecter</button>
+    </form>
+    
+    <button mat-stroked-button color="primary" routerLink="/inscription">Créer un compte</button>
+    
+    } @else {
+        <button mat-raised-button color="warn" (click)="deconnexion()">Se deconecter</button>
+    }
+    
+    

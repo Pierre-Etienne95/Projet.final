@@ -1,0 +1,30 @@
+<div class="container">
+
+    <button mat-raised-button color="primary" routerLink="/edition-local">
+      <mat-icon fontIcon="person_add"></mat-icon>
+      Ajouter un local
+    </button>
+    
+    <div class="row">
+      @for (local of listeLocal; track $index){
+        <div class="col-12 col-md-6 col-lg-4 mt-4">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{local.nom}}</mat-card-title>
+              <mat-card-subtitle>{{local.mcarre}} m²</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://placehold.co/600x400/png">    
+            <mat-card-content>
+              <p>
+                Local situer à {{local.site?.adresse}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="primary" [routerLink]="['/edition-local', local.id]">Modifier</button>
+              <button mat-raised-button color="warn" (click)="supprimeLocal(local.id)">Supprimer</button>
+            </mat-card-actions>
+        </mat-card>
+        </div>  
+      }
+    </div>
+  </div>
